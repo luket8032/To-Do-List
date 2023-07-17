@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do</title>
-    <script src="bundle.js" defer7></script>
+    <script src="bundle.js" defer></script>
 </head>
 <body>
     <div class="container">
         <div class="nav">
+            <img src="icons/icons8-menu-50.png" alt="menu" class="menu-icon" id="menuBtn" data-state="open">
             <div class="title">
                 <img src="icons/icons8-check-50.png" alt="checklist" class="title-icon">
                 <h1>To<span class="title-secondary">Do</span></h1>
             </div>
         </div>
         <div class="content">
-            <div class="menu"></div>
+            <div class="menu" id="menu">
+                <h2>Home</h2>
+                <hr>
+                <div class="menu-buttons">
+                    <button class="menu-btn" data-state="active"><img src="icons/icons8-tasks-24.png" alt="tasks">All Tasks</button>
+                    <button class="menu-btn" data-state="inactive"><img src="icons/icons8-today-24.png" alt="today">Today</button>
+                    <button class="menu-btn" data-state="inactive"><img src="icons/icons8-clock-24.png" alt="upcoming">Upcoming</button>
+                </div>
+                <h2>Projects</h2>
+                <hr>
+            </div>
             <div class="task-container"></div>
         </div>
     </div>
