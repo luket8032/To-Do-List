@@ -21,8 +21,10 @@ const domStuff = (() => {
     const addTaskElement = (task) => {
         const checkElement = createCheckbox(task.title)
         const taskElement = document.createElement('div');
+        const date = document.createElement('span');
+        date.textContent = `Date: ${task.dueDate}`
         taskElement.classList.add('task-item')
-        taskElement.append(checkElement)
+        taskElement.append(checkElement, date)
         taskList.append(taskElement);
     }
     
