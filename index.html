@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="nav">
-            <img src="icons/icons8-menu-50.png" alt="menu" class="menu-icon" id="menuBtn" data-state="open">
+            <img src="icons/icons8-menu-50.png" alt="menu" class="menu-icon" id="menuToggle" data-state="open">
             <div class="title">
                 <img src="icons/icons8-check-50.png" alt="checklist" class="title-icon">
                 <h1>ToDo</span></h1>
@@ -24,15 +24,15 @@
                 <h2>Home</h2>
                 <hr>
                 <div class="menu-buttons">
-                    <button class="menu-btn" data-state="active"><img src="icons/icons8-tasks-24.png" alt="tasks">All Tasks</button>
-                    <button class="menu-btn" data-state="inactive"><img src="icons/icons8-today-24.png" alt="today">Today</button>
-                    <button class="menu-btn" data-state="inactive"><img src="icons/icons8-clock-24.png" alt="upcoming">Upcoming</button>
+                    <button class="menu-btn" id="menu-btn"><img src="icons/icons8-tasks-24.png" alt="tasks">All Tasks</button>
+                    <button class="menu-btn" id="menu-btn"><img src="icons/icons8-today-24.png" alt="today">Today</button>
+                    <button class="menu-btn" id="menu-btn"><img src="icons/icons8-clock-24.png" alt="upcoming">Upcoming</button>
                 </div>
                 <h2>Projects</h2>
                 <hr>
             </div>
             <div class="task-container">
-                <h1 id="taskHeader" class="taskHeader" data-currentPage =""></h1>
+                <h1 id="taskHeader" class="task-header" data-currentPage =""></h1>
             </div>
         </div>
     </div>
