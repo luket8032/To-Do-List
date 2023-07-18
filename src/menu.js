@@ -4,16 +4,30 @@ const menu = (() => {
     function closeMenu() {
         menu.style.width = "0%";
         menu.style.padding = "0px";
-        menuBtn.dataset.state = "close";
+        menuToggle.dataset.state = "close";
     };
     
     function openMenu () {
         menu.style.width = "20%";
         menu.style.padding = "16px";
-        menuBtn.dataset.state = "open";
+        menuToggle.dataset.state = "open";
     };
 
-    return { closeMenu, openMenu }
+    const toggleMenu = () => {
+        const menuToggle = document.getElementById('menuToggle');
+        menuToggle.addEventListener('click', () => {
+            switch(menuToggle.dataset.state) {
+                case "open":
+                    closeMenu();
+                    break
+                case "close":
+                    openMenu();
+                    break
+            }
+        });
+    }
+
+    return { toggleMenu }
 })();
 
 export { menu }

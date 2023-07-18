@@ -87,7 +87,7 @@
     height: 2.5em;
 }
 
-/* Main Content */
+/* Menu */
 .menu {
     background-color: var(--secondary);
     overflow-x: hidden;
@@ -126,8 +126,18 @@
     display: flex;
 }
 
-
+/* Main Content */
 .task-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
+    padding: 50px;
+    position: relative;
+}
+
+.task-header {
+    border-bottom: solid black 1px;
+    width: 80%;
 }
 

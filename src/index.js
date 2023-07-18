@@ -1,21 +1,10 @@
 import { tasks } from './tasks';
 import { menu } from './menu';
+import { domStuff } from './dom';
+import { controller } from './controller';
 import './style.css'
 
 const allTasks = [];
-const menuBtn = document.getElementById('menuBtn');
-
-menuBtn.addEventListener('click', () => {
-    switch(menuBtn.dataset.state) {
-        case "open":
-            menu.closeMenu();
-            break
-        case "close":
-            menu.openMenu();
-            break
-    }
-});
-
 
 const testTask =  tasks.createTask(
     'test',
@@ -25,4 +14,31 @@ const testTask =  tasks.createTask(
     'none',
     allTasks
 );
-console.log(testTask)
+
+const testTask2 =  tasks.createTask(
+    'test2',
+    'this is a description',
+    Date(),
+    'High',
+    'none',
+    allTasks
+);
+
+const testTask3 =  tasks.createTask(
+    'test2',
+    'this is a description',
+    Date(),
+    'High',
+    'none',
+    allTasks
+);
+
+
+
+
+domStuff.showAllTasks();
+controller.switchPage();
+menu.toggleMenu();
+
+console.log(allTasks)
+
