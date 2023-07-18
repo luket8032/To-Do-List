@@ -1,4 +1,6 @@
 const tasks = (() => {
+    const allTasks = []
+
     const taskFactory = (title, description, dueDate, priority, project) => {
         return {title, description, dueDate, priority ,project}
     };
@@ -7,17 +9,17 @@ const tasks = (() => {
         return taskArr.some(task => task.title === taskTitle);
       };
 
-    const createTask = (title, description, dueDate, priority, project, taskArr) => {
-         if(checkDupeTask(taskArr, title) === false) {
+    const createTask = (title, description, dueDate, priority, project) => {
+         if(checkDupeTask(allTasks, title) === false) {
              const task = taskFactory(title, description, dueDate, priority, project);
-             taskArr.push(task);
+             allTasks.push(task);
              return task
          } else {
-             console.log(checkDupeTask(taskArr, title))
+             return
         };
      };
 
-    return {createTask, checkDupeTask}
+    return {createTask, allTasks}
 })();
 
 export {tasks}

@@ -67,7 +67,6 @@
     background: #7F7FD5;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     height: 75px;
     position: relative;
@@ -85,6 +84,7 @@
 
 .title-icon {
     height: 2.5em;
+    margin-right: 4px;
 }
 
 /* Menu */
@@ -132,7 +132,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 50px;
+    padding: 50px 50px 0 50px;
     position: relative;
 }
 
@@ -140,4 +140,21 @@
     border-bottom: solid black 1px;
     width: 80%;
 }
+
+.task-item {
+    align-items: end;
+    border-bottom: solid lightgrey 1px;
+    display: flex;
+    font-size: 1.3em;
+    margin: 12px;
+    width: 90%;
+}
+
+.task-list {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
 

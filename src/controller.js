@@ -2,6 +2,7 @@ import { domStuff } from "./dom";
 
 const controller = (() => {
     const menuButtons = document.querySelectorAll('#menu-btn');
+    const taskContainer = document.getElementById('task-container');
 
     const switchPage = () => {
         menuButtons.forEach(button => {
