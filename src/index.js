@@ -1,28 +1,28 @@
+import { tasks } from './tasks';
+import { menu } from './menu';
 import './style.css'
 
-const menu = document.getElementById('menu');
-const menuBtn = document.getElementById('menuBtn')
-
-function closeMenu() {
-    menu.style.width = "0%";
-    menu.style.padding = "0px";
-    menuBtn.dataset.state = "close";
-};
-
-function openMenu () {
-    menu.style.width = "20%";
-    menu.style.padding = "16px";
-    menuBtn.dataset.state = "open";
-};
+const allTasks = [];
+const menuBtn = document.getElementById('menuBtn');
 
 menuBtn.addEventListener('click', () => {
     switch(menuBtn.dataset.state) {
         case "open":
-            closeMenu();
+            menu.closeMenu();
             break
         case "close":
-            openMenu();
+            menu.openMenu();
             break
     }
 });
 
+
+const testTask =  tasks.createTask(
+    'test',
+    'this is a description',
+    Date(),
+    'High',
+    'none',
+    allTasks
+);
+console.log(testTask)

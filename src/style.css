@@ -29,10 +29,31 @@
 
 
 /* Nav Elements */
-.menu-icon {
+.add {
+    align-items: center;
+    color: white;
+    display: flex;
+    font-size: 1.2em;
     position: absolute;
-    left: 2%;
+    right: 2%;
+}
+
+.add-icon {
     height: 2em;
+    margin-left: 8px;
+    transition: .3s;
+}
+
+.add-icon:hover {
+    scale: 1.2;
+    transition: .3s;
+}
+
+.menu-icon {
+    height: 2em;
+    left: 2%;
+    position: absolute;
+    transition: .3s;
 }
 
 .menu-icon:hover {
@@ -88,6 +109,7 @@
     font-size: 1.1em;
     margin: 8px 0;
     padding: 4px;
+    transition: .3s;
     width: 85%;
 }
 
