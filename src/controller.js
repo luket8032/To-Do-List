@@ -2,9 +2,12 @@ import { domStuff } from "./dom";
 
 const controller = (() => {
     const menuButtons = document.querySelectorAll('#menu-btn');
-    const taskContainer = document.getElementById('task-container');
+    const addBtn = document.getElementById('add-icon');
+    const closeBtn = document.getElementById('close-icon');
+    const form = document.getElementById('task-form');
+    const formBackground = document.getElementById('task-form-background')
 
-    const switchPage = () => {
+    const addListeners = () => {
         menuButtons.forEach(button => {
             button.addEventListener('click', e => {
                 switch(button.textContent) {
@@ -20,9 +23,19 @@ const controller = (() => {
                 }
             })
         });
+
+        addBtn.addEventListener('click', () => {
+            form.style.display = 'block';
+            formBackground.style.display = 'block'
+        });
+
+        closeBtn.addEventListener('click', () => {
+            form.style.display = 'none';
+            formBackground.style.display = 'none'
+        });
     };
     
-    return { switchPage }
+    return { addListeners }
 })();
 
 export { controller }

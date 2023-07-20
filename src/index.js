@@ -25,7 +25,7 @@ const testTask2 =  tasks.createTask(
 );
 
 domStuff.showAllTasks();
-controller.switchPage(allTasks);
+controller.addListeners();
 menu.toggleMenu();
 
 
