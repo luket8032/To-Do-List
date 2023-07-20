@@ -1,11 +1,36 @@
 import { domStuff } from "./dom";
+import { tasks } from "./tasks";
 
 const controller = (() => {
     const menuButtons = document.querySelectorAll('#menu-btn');
     const addBtn = document.getElementById('add-icon');
     const closeBtn = document.getElementById('close-icon');
-    const form = document.getElementById('task-form');
+    const formContainer = document.getElementById('task-form');
     const formBackground = document.getElementById('task-form-background')
+    const form = document.querySelector('.task-form form');
+
+    const closeForm = () => {
+        formContainer.style.display = 'none';
+        formBackground.style.display = 'none';
+    }
+
+    const openForm = () => {
+        formContainer.style.display = 'block';
+        formBackground.style.display = 'block';
+    }
+
+    const submitForm = (submitted) => {
+        const data = new FormData(submitted);
+        const formData = Object.fromEntries(data);
+        tasks.createTask(
+            formData.taskName ,
+            formData.taskDesc ,
+            formData.taskDate ,
+            formData.taskPrio ,
+            formData.taskProject 
+        )
+        domStuff.addTaskElement(tasks.allTasks.slice(-1)[0])
+    }
 
     const addListeners = () => {
         menuButtons.forEach(button => {
@@ -25,14 +50,18 @@ const controller = (() => {
         });
 
         addBtn.addEventListener('click', () => {
-            form.style.display = 'block';
-            formBackground.style.display = 'block'
+            openForm();
         });
 
         closeBtn.addEventListener('click', () => {
-            form.style.display = 'none';
-            formBackground.style.display = 'none'
+            closeForm();
         });
+        
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            submitForm(form)
+            closeForm();
+        })
     };
     
     return { addListeners }

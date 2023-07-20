@@ -5,8 +5,6 @@ const domStuff = (() => {
     const taskHeader = document.getElementById('taskHeader');
     const taskList = document.getElementById('taskList');
 
-
-
     const addTaskElement = (task) => {
         const taskElement = document.createElement('div');
         const check = document.createElement('input');
@@ -38,7 +36,7 @@ const domStuff = (() => {
         taskList.innerHTML = ''
     }
 
-    return { showAllTasks, showTodayTasks, showUpcomingTasks }
+    return { showAllTasks, showTodayTasks, showUpcomingTasks, addTaskElement }
 })();
 
 export { domStuff }

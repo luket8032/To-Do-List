@@ -11,8 +11,7 @@ const testTask =  tasks.createTask(
     'this is a description',
     Date(),
     'High',
-    'none',
-    allTasks
+    'none'
 );
 
 const testTask2 =  tasks.createTask(
@@ -20,8 +19,7 @@ const testTask2 =  tasks.createTask(
     'this is a description',
     Date(),
     'High',
-    'none',
-    allTasks
+    'none'
 );
 
 domStuff.showAllTasks();
