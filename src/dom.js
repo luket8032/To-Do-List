@@ -10,21 +10,26 @@ const domStuff = (() => {
         const icons = document.createElement('div');
         const check = document.createElement('input');
         const title = document.createElement('label');
+        const date = document.createElement('span');
+        const prio = document.createElement('span');
         const trashIcon = document.createElement('i')
         const infoIcon = document.createElement('i');
-        title.textContent = `${task.title}`;
+        title.textContent = task.title;
+        date.textContent = `Due: ${task.dueDate}`;
+        prio.textContent = task.priority;
         taskElement.classList.add('task-item');
         trashIcon.classList.add('fa', 'fa-trash-o');
         infoIcon.classList.add('fa', 'fa-info-circle');
         check.classList.add('task-check');
         title.classList.add('task-crossout');
         icons.classList.add('icons');
+        prio.classList.add(task.priority)
         check.type = 'checkbox';
         check.id = 'task';
         trashIcon.id = 'delete-btn';
         infoIcon.id = 'info-btn';
         title.setAttribute('for', 'task');
-        icons.append(trashIcon, infoIcon);
+        icons.append(date, prio, trashIcon, infoIcon);
         taskElement.append(check, title, icons);
         taskList.append(taskElement);
     }

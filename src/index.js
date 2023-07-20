@@ -7,7 +7,7 @@ import './style.css'
 const testTask =  tasks.createTask(
     'Task 1',
     'this is a description',
-    Date(),
+    '2023-07-20',
     'High',
     'none'
 );
@@ -15,7 +15,7 @@ const testTask =  tasks.createTask(
 const testTask2 =  tasks.createTask(
     'Task 2',
     'this is a description',
-    Date(),
+    '2023-07-20',
     'High',
     'none'
 );

@@ -150,7 +150,10 @@ input[type=checkbox]:checked + label.task-crossout{
 }
 
 .task-crossout {
-    float: right;
+    width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .task-header {
@@ -178,11 +181,15 @@ input[type=checkbox]:checked + label.task-crossout{
     transition: .2s;
 }
 
+.task-item span {
+    font-size: .8em;
+    margin-right: 12px;
+}
+
 .icons{
     margin-left: auto;
      
 }
-
 
 .task-list {
     align-items: center;
@@ -264,5 +271,17 @@ input[type=checkbox]:checked + label.task-crossout{
     transition: .2s;
 }
 
+/* Priority classes */
+.High {
+    color: red;
+}
+
+.Medium {
+    color: orange;
+}
+
+.Low {
+    color: green;
+}
 
 
