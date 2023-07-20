@@ -7,16 +7,23 @@ const domStuff = (() => {
 
     const addTaskElement = (task) => {
         const taskElement = document.createElement('div');
+        const icons = document.createElement('div');
         const check = document.createElement('input');
         const title = document.createElement('label');
+        const trashIcon = document.createElement('i')
+        const infoIcon = document.createElement('i');
         title.textContent = `${task.title}`;
         taskElement.classList.add('task-item');
+        trashIcon.classList.add('fa', 'fa-trash-o');
+        infoIcon.classList.add('fa', 'fa-info-circle');
         check.classList.add('task-check');
         title.classList.add('task-crossout');
+        icons.classList.add('icons')
         check.type = 'checkbox'
         check.id = 'task'
         title.setAttribute('for', 'task')
-        taskElement.append(check, title)
+        icons.append(trashIcon, infoIcon)
+        taskElement.append(check, title, icons)
         taskList.append(taskElement);
     }
     

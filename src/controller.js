@@ -22,14 +22,14 @@ const controller = (() => {
     const submitForm = (submitted) => {
         const data = new FormData(submitted);
         const formData = Object.fromEntries(data);
-        tasks.createTask(
-            formData.taskName ,
-            formData.taskDesc ,
-            formData.taskDate ,
-            formData.taskPrio ,
-            formData.taskProject 
-        )
-        domStuff.addTaskElement(tasks.allTasks.slice(-1)[0])
+        const create = tasks.createTask(formData.taskName, formData.taskDesc, formData.taskDate, formData.taskPrio, formData.taskProject);
+        if(create === 'success') {
+            create;
+            domStuff.addTaskElement(tasks.allTasks.slice(-1)[0]);
+        } else {
+            window.alert('Task name already taken.');
+        }
+        
     }
 
     const addListeners = () => {
@@ -61,6 +61,7 @@ const controller = (() => {
             e.preventDefault();
             submitForm(form)
             closeForm();
+            form.reset();
         })
     };
     

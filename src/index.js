@@ -4,8 +4,6 @@ import { domStuff } from './dom';
 import { controller } from './controller';
 import './style.css'
 
-const allTasks = [];
-
 const testTask =  tasks.createTask(
     'Task 1',
     'this is a description',
