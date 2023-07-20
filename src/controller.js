@@ -1,13 +1,13 @@
 import { domStuff } from "./dom";
 import { tasks } from "./tasks";
+const menuButtons = document.querySelectorAll('#menu-btn');
+const addBtn = document.getElementById('add-icon');
+const closeBtn = document.getElementById('close-icon');
+const formContainer = document.getElementById('task-form');
+const formBackground = document.getElementById('task-form-background')
+const form = document.querySelector('.task-form form');
 
 const controller = (() => {
-    const menuButtons = document.querySelectorAll('#menu-btn');
-    const addBtn = document.getElementById('add-icon');
-    const closeBtn = document.getElementById('close-icon');
-    const formContainer = document.getElementById('task-form');
-    const formBackground = document.getElementById('task-form-background')
-    const form = document.querySelector('.task-form form');
 
     const closeForm = () => {
         formContainer.style.display = 'none';
@@ -63,8 +63,20 @@ const controller = (() => {
             closeForm();
             form.reset();
         })
+
+        document.addEventListener('click', (e) => {
+            const targetRemove = e.target.closest('#delete-btn');
+            const targetInfo = e.target.closest('#info-btn');
+            if(targetRemove) {
+                const targetTitle = targetRemove.parentElement.parentElement.querySelector('.task-crossout').textContent;
+                targetRemove.parentElement.parentElement.remove()
+                tasks.deleteTask(targetTitle);
+                console.log(tasks.allTasks)
+            } else if (targetInfo) {
+                console.log('showing task info');
+            }
+        })
     };
-    
     return { addListeners }
 })();
 

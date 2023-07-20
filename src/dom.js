@@ -18,12 +18,14 @@ const domStuff = (() => {
         infoIcon.classList.add('fa', 'fa-info-circle');
         check.classList.add('task-check');
         title.classList.add('task-crossout');
-        icons.classList.add('icons')
-        check.type = 'checkbox'
-        check.id = 'task'
-        title.setAttribute('for', 'task')
-        icons.append(trashIcon, infoIcon)
-        taskElement.append(check, title, icons)
+        icons.classList.add('icons');
+        check.type = 'checkbox';
+        check.id = 'task';
+        trashIcon.id = 'delete-btn';
+        infoIcon.id = 'info-btn';
+        title.setAttribute('for', 'task');
+        icons.append(trashIcon, infoIcon);
+        taskElement.append(check, title, icons);
         taskList.append(taskElement);
     }
     
