@@ -5,26 +5,20 @@ const domStuff = (() => {
     const taskHeader = document.getElementById('taskHeader');
     const taskList = document.getElementById('taskList');
 
-    const createCheckbox = (name) => {
-        const wrapper = document.createElement('label');
-        const label = document.createElement('span');
-        const checkbox = document.createElement('input');
-        const checkDiv = document.createElement('div');
-        label.textContent = name;
-        checkbox.type = 'checkbox';
-        wrapper.classList.add('b-contain');
-        checkDiv.classList.add('b-input');
-        wrapper.append(label, checkbox, checkDiv);
-        return wrapper
-    }
+
 
     const addTaskElement = (task) => {
-        const checkElement = createCheckbox(task.title)
         const taskElement = document.createElement('div');
-        const date = document.createElement('span');
-        date.textContent = `Date: ${task.dueDate}`
-        taskElement.classList.add('task-item')
-        taskElement.append(checkElement, date)
+        const check = document.createElement('input');
+        const title = document.createElement('label');
+        title.textContent = `${task.title}`;
+        taskElement.classList.add('task-item');
+        check.classList.add('task-check');
+        title.classList.add('task-crossout');
+        check.type = 'checkbox'
+        check.id = 'task'
+        title.setAttribute('for', 'task')
+        taskElement.append(check, title)
         taskList.append(taskElement);
     }
     
