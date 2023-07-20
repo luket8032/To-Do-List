@@ -15,7 +15,7 @@
                 <h1>ToDo</span></h1>
                 <div class="add">
                     <p>Add Task</p>
-                    <img src="icons/icons8-add-50.png" alt="add" class="add-icon">
+                    <img src="icons/icons8-add-50.png" alt="add" class="add-icon" id="add-icon">
                 </div>
             </div>
         </div>
@@ -37,5 +37,40 @@
             </div>
         </div>
     </div>
+    <div class="task-form" id="task-form">
+        <form>
+            <div>
+                <label for="taskName">Task Name: </label>
+                <input type="text" name="taskName" id="taskName" required>
+            </div>
+            <div>
+                <label for="taskDesc">Description: </label>
+                <textarea name="taskDesc" id="taskDesc" cols="30" rows="10" required></textarea>
+            </div>
+            <div>
+                <label for="taskDate">Date: </label>
+                <input type="date" name="taskDate" id="taskDate" required>
+            </div>
+            <div>
+                <label for="taskPrio">Priority</label>
+                <select name="taskPrio" id="taskPrio" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+            <div>
+                <label for="taskProject">Project:</label>
+                <select name="taskProject" id="taskProject" required>
+                    <option value="None">None</option>
+                </select>
+            </div>
+            <div class="form-submit">
+                <button type="submit" class="submit-btn">submit</button>
+            </div>
+        </form>
+        <img src="icons/icons8-close-50.png" alt="close" class="close-icon" id="close-icon">
+    </div>
+    <div class="task-form-background" id="task-form-background"></div>
 </body>
 </html>
