@@ -6,6 +6,7 @@ const closeBtn = document.getElementById('close-icon');
 const formContainer = document.getElementById('task-form');
 const formBackground = document.getElementById('task-form-background')
 const form = document.querySelector('.task-form form');
+const currentPage = document.getElementById('taskHeader').textContent;
 
 const controller = (() => {
 
@@ -25,7 +26,17 @@ const controller = (() => {
         const create = tasks.createTask(formData.taskName, formData.taskDesc, formData.taskDate, formData.taskPrio, formData.taskProject);
         if(create === 'success') {
             create;
-            domStuff.addTaskElement(tasks.allTasks.slice(-1)[0]);
+            switch(currentPage) {
+                case "All Tasks":
+                    domStuff.showAllTasks();
+                    break
+                case "Today's Tasks":
+                    domStuff.showTodayTasks();
+                    break
+                case "Upcoming Tasks":
+                    domStuff.showUpcomingTasks();
+                    break
+            }
         } else {
             window.alert('Task name already taken.');
         }

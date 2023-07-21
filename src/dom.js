@@ -35,19 +35,22 @@ const domStuff = (() => {
     }
     
     const showAllTasks = () => {
-        taskHeader.textContent = `All Tasks (${tasks.allTasks.length})`;
+        taskHeader.textContent = 'All Tasks';
         taskList.innerHTML = ''
         tasks.allTasks.forEach(task => addTaskElement(task));
     }
 
     const showTodayTasks = () => {
+        const todaysTasks = tasks.getTodaysTasks();
         taskHeader.textContent = `Today's Tasks`;
         taskList.innerHTML = ''
+        todaysTasks.forEach(task => addTaskElement(task));
     }
 
     const showUpcomingTasks = () => {
         taskHeader.textContent = 'Upcoming Tasks';
         taskList.innerHTML = ''
+        tasks.getUpcomingTasks();
     }
 
     return { showAllTasks, showTodayTasks, showUpcomingTasks, addTaskElement }
