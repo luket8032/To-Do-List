@@ -48,9 +48,10 @@ const domStuff = (() => {
     }
 
     const showUpcomingTasks = () => {
+        const upcomingTasks = tasks.getUpcomingTasks();
         taskHeader.textContent = 'Upcoming Tasks';
         taskList.innerHTML = ''
-        tasks.getUpcomingTasks();
+        upcomingTasks.forEach(task => addTaskElement(task));
     }
 
     return { showAllTasks, showTodayTasks, showUpcomingTasks, addTaskElement }

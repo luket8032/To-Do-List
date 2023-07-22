@@ -4,29 +4,30 @@ const menuButtons = document.querySelectorAll('#menu-btn');
 const addBtn = document.getElementById('add-icon');
 const closeBtn = document.getElementById('close-icon');
 const formContainer = document.getElementById('task-form');
-const formBackground = document.getElementById('task-form-background')
+const formBackground = document.getElementById('task-form-background');
 const form = document.querySelector('.task-form form');
-const currentPage = document.getElementById('taskHeader').textContent;
+const currentPage = document.getElementById('taskHeader');
 
 const controller = (() => {
 
     const closeForm = () => {
         formContainer.style.display = 'none';
         formBackground.style.display = 'none';
-    }
+    };
 
     const openForm = () => {
         formContainer.style.display = 'block';
         formBackground.style.display = 'block';
-    }
+    };
 
     const submitForm = (submitted) => {
         const data = new FormData(submitted);
         const formData = Object.fromEntries(data);
+        const page = currentPage.textContent;
         const create = tasks.createTask(formData.taskName, formData.taskDesc, formData.taskDate, formData.taskPrio, formData.taskProject);
         if(create === 'success') {
             create;
-            switch(currentPage) {
+            switch(page) {
                 case "All Tasks":
                     domStuff.showAllTasks();
                     break
@@ -40,8 +41,7 @@ const controller = (() => {
         } else {
             window.alert('Task name already taken.');
         }
-        
-    }
+    };
 
     const addListeners = () => {
         menuButtons.forEach(button => {
@@ -80,9 +80,8 @@ const controller = (() => {
             const targetInfo = e.target.closest('#info-btn');
             if(targetRemove) {
                 const targetTitle = targetRemove.parentElement.parentElement.querySelector('.task-crossout').textContent;
-                targetRemove.parentElement.parentElement.remove()
+                targetRemove.parentElement.parentElement.remove();
                 tasks.deleteTask(targetTitle);
-                console.log(tasks.allTasks)
             } else if (targetInfo) {
                 console.log('showing task info');
             }

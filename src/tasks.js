@@ -26,7 +26,7 @@ const tasks = (() => {
             if(task.title === taskName) {
                 allTasks.splice(index, 1);
             }
-        })
+        });
     };
 
     const getTodaysTasks = () => {
@@ -36,8 +36,7 @@ const tasks = (() => {
             if(task.dueDate == today) {
                 todaysTasks.push(task)
             }
-        })
-            console.log(today+7)
+        });
             return todaysTasks;
     };
 
@@ -50,10 +49,9 @@ const tasks = (() => {
             if(taskDate >= startDate && taskDate <= endDate) {
                 upcomingTasks.push(task)
             }
-        })
-        console.log(upcomingTasks)
+        });
         return upcomingTasks
-    }
+    };
 
     return {createTask, deleteTask, getTodaysTasks, getUpcomingTasks, allTasks};
 })();
