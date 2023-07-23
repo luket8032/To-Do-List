@@ -4,7 +4,8 @@ const domStuff = (() => {
     const taskContainer = document.getElementById('task-container');
     const taskHeader = document.getElementById('taskHeader');
     const taskList = document.getElementById('taskList');
-    const projectList = document.getElementById('projectList')
+    const projectList = document.getElementById('projectList');
+    const selectProject = document.getElementById('taskProject');
 
     const addTaskElement = (task) => {
         const taskElement = document.createElement('div');
@@ -63,11 +64,22 @@ const domStuff = (() => {
 
     const showProjects = () => {
         tasks.projects.forEach(project => {
-            addProjectElement(project);
+            if(project != 'None') {addProjectElement(project);}
         })
     }
 
-    return { showAllTasks, showTodayTasks, showUpcomingTasks, addTaskElement, addProjectElement, showProjects }
+    const listProjectOptions = () => {
+        selectProject.innerHTML = '';
+        tasks.projects.forEach(project => {
+            const projectOption = document.createElement('option');
+            projectOption.value = project;
+            projectOption.textContent = project;
+            selectProject.append(projectOption);
+        })
+    }
+
+
+    return { showAllTasks, showTodayTasks, showUpcomingTasks, addTaskElement, addProjectElement, showProjects, listProjectOptions }
 })();
 
 export { domStuff }

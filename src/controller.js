@@ -20,6 +20,7 @@ const controller = (() => {
     };
 
     const openForm = () => {
+        domStuff.listProjectOptions();
         formContainer.style.display = 'block';
         formBackground.style.display = 'block';
     };

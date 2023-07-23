@@ -2,7 +2,7 @@ import { parseISO, addDays } from 'date-fns'
 
 const tasks = (() => {
     const allTasks = [];
-    let projects = []
+    let projects = ['None']
 
     const taskFactory = (title, description, dueDate, priority, project) => {
         return {title, description, dueDate, priority ,project};
@@ -58,6 +58,10 @@ const tasks = (() => {
         });
         return upcomingTasks
     };
+
+    const getProjects = () => {
+
+    }
 
     return {createTask, deleteTask, getTodaysTasks, getUpcomingTasks, createProject, allTasks, projects};
 })();
