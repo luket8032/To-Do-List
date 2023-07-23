@@ -4,6 +4,7 @@ const domStuff = (() => {
     const taskContainer = document.getElementById('task-container');
     const taskHeader = document.getElementById('taskHeader');
     const taskList = document.getElementById('taskList');
+    const projectList = document.getElementById('projectList')
 
     const addTaskElement = (task) => {
         const taskElement = document.createElement('div');
@@ -33,6 +34,12 @@ const domStuff = (() => {
         taskElement.append(check, title, icons);
         taskList.append(taskElement);
     }
+
+    const addProjectElement = (projectName) => {
+        const projectBtn = document.createElement('button')
+        projectBtn.textContent = projectName;
+        projectList.append(projectBtn);                                            
+    }
     
     const showAllTasks = () => {
         taskHeader.textContent = 'All Tasks';
@@ -54,7 +61,13 @@ const domStuff = (() => {
         upcomingTasks.forEach(task => addTaskElement(task));
     }
 
-    return { showAllTasks, showTodayTasks, showUpcomingTasks, addTaskElement }
+    const showProjects = () => {
+        tasks.projects.forEach(project => {
+            addProjectElement(project);
+        })
+    }
+
+    return { showAllTasks, showTodayTasks, showUpcomingTasks, addTaskElement, addProjectElement, showProjects }
 })();
 
 export { domStuff }

@@ -7,6 +7,10 @@ const formContainer = document.getElementById('task-form');
 const formBackground = document.getElementById('task-form-background');
 const form = document.querySelector('.task-form form');
 const currentPage = document.getElementById('taskHeader');
+const newProjectBtn = document.getElementById('newProjectBtn')
+const newProjectContainer = document.getElementById('projectForm')
+const closeProjectBtn = document.getElementById('closeProject')
+const projectForm = document.querySelector('.project-form form')
 
 const controller = (() => {
 
@@ -18,6 +22,16 @@ const controller = (() => {
     const openForm = () => {
         formContainer.style.display = 'block';
         formBackground.style.display = 'block';
+    };
+
+    const openProjectForm = () => {
+        newProjectContainer.style.display = 'block';
+        formBackground.style.display = 'block';
+    }
+
+    const closeProjectForm = () => {
+        newProjectContainer.style.display = 'none';
+        formBackground.style.display = 'none';
     };
 
     const submitForm = (submitted) => {
@@ -43,6 +57,13 @@ const controller = (() => {
         }
     };
 
+    const submitProjectForm = (submitted) => {
+        const data = new FormData(submitted);
+        const formData = Object.fromEntries(data);
+        tasks.createProject(formData.projectName);
+        domStuff.addProjectElement(formData.projectName)
+    }
+
     const addListeners = () => {
         menuButtons.forEach(button => {
             button.addEventListener('click', e => {
@@ -67,12 +88,27 @@ const controller = (() => {
         closeBtn.addEventListener('click', () => {
             closeForm();
         });
+
+        closeProjectBtn.addEventListener('click', () => {
+            closeProjectForm();
+        });
         
         form.addEventListener("submit", (e) => {
             e.preventDefault();
             submitForm(form)
             closeForm();
             form.reset();
+        })
+
+        projectForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            submitProjectForm(projectForm)
+            closeProjectForm();
+            projectForm.reset();
+        })
+
+        newProjectBtn.addEventListener('click', () => {
+            openProjectForm();
         })
 
         document.addEventListener('click', (e) => {

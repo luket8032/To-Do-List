@@ -106,6 +106,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .menu-buttons button {
     border: none;
     border-radius: 8px;
@@ -286,3 +287,80 @@ input[type=checkbox]:checked + label.task-crossout{
 }
 
 
+/* Project menu */
+.project-btn {
+    border: none;
+    border-radius: 8px;
+    background-color: var(--secondary);
+    font-size: 1.1em;
+    margin: 8px 0;
+    padding: 4px;
+    transition: .3s;
+    width: 85%;
+    text-align: center;
+}
+
+.project-btn:hover {
+    filter: brightness(85%);
+}
+
+.project-dropdown {
+    align-items: center;
+    display: flex;
+}
+
+.project-list {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-list button {
+    border: none;
+    border-radius: 8px;
+    background-color: var(--secondary);
+    font-size: 1.1em;
+    margin: 8px 0;
+    padding: 4px;
+    transition: .3s;
+    width: 85%;
+}
+
+.project-list button:hover {
+    filter: brightness(85%);
+}
+
+.project-menu div {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Project Form */
+.project-form {
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 12px;
+    display: none;
+    padding: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.project-form  div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.project-form  input {
+    padding: 2px 8px;
+}
+
+.project-form  textarea {
+    padding: 8px;
+    resize: none;
+}

@@ -29,10 +29,13 @@
                     <button class="menu-btn" id="menu-btn"><img src="icons/icons8-today-24.png" alt="today">Today</button>
                     <button class="menu-btn" id="menu-btn"><img src="icons/icons8-clock-24.png" alt="upcoming">Upcoming</button>
                 </div>
-                <h2>Projects</h2>
-                <hr>
                 <div class="project-menu">
-                    
+                    <h2 class="project-dropdown">Projects</h2>
+                    <hr>
+                    <div class="project-list" id="projectList">
+                        
+                    </div>
+                    <div><button class="project-btn" id="newProjectBtn">+ Add a new project</button></div>
                 </div>
             </div>
             <div class="task-container" id="task-container">
@@ -75,6 +78,20 @@
         </form>
         <img src="icons/icons8-close-50.png" alt="close" class="close-icon" id="close-icon">
     </div>
+    
+    <div class="project-form" id="projectForm">
+        <form>
+            <div>
+                <label for="projectName">Project Name:</label>
+                <input type="text" name="projectName" id="projectName" required>
+            </div>
+            <div class="form-submit">
+                <button type="submit" class="submit-btn">submit</button>
+            </div>
+        </form>
+        <img src="icons/icons8-close-50.png" alt="close" class="close-icon" id="closeProject" style="margin-top: 6px;">
+    </div>
+
     <div class="task-form-background" id="task-form-background"></div>
 </body>
 </html>

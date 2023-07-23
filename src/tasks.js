@@ -1,7 +1,8 @@
-import { getWeek, parseISO, addDays } from 'date-fns'
+import { parseISO, addDays } from 'date-fns'
 
 const tasks = (() => {
     const allTasks = [];
+    let projects = []
 
     const taskFactory = (title, description, dueDate, priority, project) => {
         return {title, description, dueDate, priority ,project};
@@ -20,6 +21,11 @@ const tasks = (() => {
              return;
         };
     };
+
+    const createProject =  (projectName) => {
+        projects.push(projectName)
+        console.log(projects)
+    }
 
     const deleteTask = (taskName) => {
         allTasks.forEach((task, index) => {
@@ -53,7 +59,7 @@ const tasks = (() => {
         return upcomingTasks
     };
 
-    return {createTask, deleteTask, getTodaysTasks, getUpcomingTasks, allTasks};
+    return {createTask, deleteTask, getTodaysTasks, getUpcomingTasks, createProject, allTasks, projects};
 })();
 
 export {tasks}
