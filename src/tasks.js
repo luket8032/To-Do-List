@@ -67,10 +67,6 @@ const tasks = (() => {
         return upcomingTasks
     };
 
-    const getProjects = () => {
-
-    }
-
     return {createTask, deleteTask, getTodaysTasks, getUpcomingTasks, createProject, allTasks, projects};
 })();
 

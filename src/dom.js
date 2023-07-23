@@ -80,8 +80,19 @@ const domStuff = (() => {
         })
     }
 
+    const showTaskforProject = (projectName) => {
+        taskList.innerHTML = ''
+        taskHeader.textContent = projectName;
+        tasks.allTasks.forEach(task => {
+            if(task.project === projectName) {
+                addTaskElement(task);
+            }
+        })
+    }
 
-    return { showAllTasks, showTodayTasks, showUpcomingTasks, addTaskElement, addProjectElement, showProjects, listProjectOptions }
+
+    return { showAllTasks, showTodayTasks, showUpcomingTasks, addTaskElement, addProjectElement, showProjects, listProjectOptions,
+    showTaskforProject }
 })();
 
 export { domStuff }

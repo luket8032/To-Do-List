@@ -8,7 +8,6 @@ const closeBtn = document.getElementById('close-icon');
 const formContainer = document.getElementById('task-form');
 const formBackground = document.getElementById('task-form-background');
 const form = document.querySelector('.task-form form');
-const currentPage = document.getElementById('taskHeader');
 const newProjectBtn = document.getElementById('newProjectBtn');
 const newProjectContainer = document.getElementById('projectForm');
 const closeProjectBtn = document.getElementById('closeProject');
@@ -41,11 +40,11 @@ const controller = (() => {
     const submitForm = (submitted) => {
         const data = new FormData(submitted);
         const formData = Object.fromEntries(data);
-        const page = currentPage.textContent;
         const create = tasks.createTask(formData.taskName, formData.taskDesc, formData.taskDate, formData.taskPrio, formData.taskProject);
         if(create === 'success') {
+            const page = document.getElementById('taskHeader');
             create;
-            switch(page) {
+            switch(page.textContent) {
                 case "All Tasks":
                     domStuff.showAllTasks();
                     break
@@ -55,6 +54,8 @@ const controller = (() => {
                 case "Upcoming Tasks":
                     domStuff.showUpcomingTasks();
                     break
+                default:
+                    domStuff.showTaskforProject(page.textContent);
             }
         } else {
             window.alert('Task name already taken.');
@@ -134,7 +135,7 @@ const controller = (() => {
     const addProjectListeners = () => {
         projects.forEach(project => {
             project.addEventListener('click', () => {
-                console.log(`showing tasks for the "${project.textContent}" project...`)
+                domStuff.showTaskforProject(project.textContent);
             })
         })
     }
