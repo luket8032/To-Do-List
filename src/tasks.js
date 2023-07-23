@@ -22,9 +22,17 @@ const tasks = (() => {
         };
     };
 
+    const checkDupeProject = (projectName) => {
+        return projects.includes(projectName);
+    }
+
     const createProject =  (projectName) => {
-        projects.push(projectName)
-        console.log(projects)
+        if(checkDupeProject(projectName) === false) {
+            projects.push(projectName);
+            return 'success';
+        } else {
+            return;
+        }
     }
 
     const deleteTask = (taskName) => {

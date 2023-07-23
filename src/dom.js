@@ -39,6 +39,7 @@ const domStuff = (() => {
     const addProjectElement = (projectName) => {
         const projectBtn = document.createElement('button')
         projectBtn.textContent = projectName;
+        projectBtn.id = 'project'
         projectList.append(projectBtn);                                            
     }
     
@@ -63,6 +64,7 @@ const domStuff = (() => {
     }
 
     const showProjects = () => {
+        projectList.innerHTML = '';
         tasks.projects.forEach(project => {
             if(project != 'None') {addProjectElement(project);}
         })
