@@ -47,8 +47,17 @@ const tasks = (() => {
         projects.forEach((project, index) => {
             if(project === projectName) {
                 projects.splice(index, 1);
+                deleteProjectTasks(projectName)
             }
         });
+    }
+
+    const deleteProjectTasks = (projectName) => {
+        allTasks.forEach((task, index) => {
+            if(task.project === projectName) {
+                allTasks.splice(index, 1);
+            }
+        })
     }
 
     const getTodaysTasks = () => {

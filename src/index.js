@@ -33,6 +33,7 @@ const testTask3 =  tasks.createTask(
 domStuff.showAllTasks();
 domStuff.showProjects();
 controller.addListeners();
+controller.addProjectListeners();
 menu.toggleMenu();
 
 

@@ -37,26 +37,30 @@ const controller = (() => {
         formBackground.style.display = 'none';
     };
 
+    const renderPage = (page) => {
+        switch(page) {
+            case "All Tasks":
+                domStuff.showAllTasks();
+                break
+            case "Today's Tasks":
+                domStuff.showTodayTasks();
+                break
+            case "Upcoming Tasks":
+                domStuff.showUpcomingTasks();
+                break
+            default:
+                domStuff.showTaskforProject(page.textContent);
+        }
+    }
+
     const submitForm = (submitted) => {
         const data = new FormData(submitted);
         const formData = Object.fromEntries(data);
         const create = tasks.createTask(formData.taskName, formData.taskDesc, formData.taskDate, formData.taskPrio, formData.taskProject);
         if(create === 'success') {
-            const page = document.getElementById('taskHeader');
+            const page = document.getElementById('taskHeader').textContent;
             create;
-            switch(page.textContent) {
-                case "All Tasks":
-                    domStuff.showAllTasks();
-                    break
-                case "Today's Tasks":
-                    domStuff.showTodayTasks();
-                    break
-                case "Upcoming Tasks":
-                    domStuff.showUpcomingTasks();
-                    break
-                default:
-                    domStuff.showTaskforProject(page.textContent);
-            }
+            renderPage(page)
         } else {
             window.alert('Task name already taken.');
         }
@@ -131,13 +135,16 @@ const controller = (() => {
                 console.log('showing task info');
             } else if (targetRemoveProject) {
                 const projectName = targetRemoveProject.parentElement.textContent;
+                const page = document.getElementById('taskHeader');
                 targetRemoveProject.parentElement.remove();
                 tasks.deleteProject(projectName);
+                renderPage('All Tasks');
             }
         })
     };
 
     const addProjectListeners = () => {
+        projects = document.querySelectorAll('#project');
         projects.forEach(project => {
             project.addEventListener('click', () => {
                 domStuff.showTaskforProject(project.textContent);
@@ -145,7 +152,7 @@ const controller = (() => {
         })
     }
 
-    return { addListeners }
+    return { addListeners, addProjectListeners }
 })();
 
 export { controller }
