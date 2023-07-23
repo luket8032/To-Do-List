@@ -23,6 +23,21 @@ const tasks = (() => {
         };
     };
 
+    const editTask = (toChange, title, description, dueDate, priority) => {
+        if(checkDupeTask(allTasks, title) === false) {
+            allTasks.forEach(task => {
+                if (task.title === toChange) {
+                    task.title = title;
+                    task.description = description;
+                    task.dueDate = dueDate;
+                    task.priority = priority;
+                }
+            });
+        } else {
+            window.alert("Task name already Taken")
+        }
+    };
+
     const checkDupeProject = (projectName) => {
         return projects.includes(projectName);
     }
@@ -89,12 +104,20 @@ const tasks = (() => {
         allTasks.forEach(task => {
             if(task.title === taskName) {
                 domStuff.showInfoElement(task);
-                console.log(task)
             }
         })
     }
 
-    return {createTask, deleteTask, getTodaysTasks, getUpcomingTasks, createProject, deleteProject, showTaskInfo, allTasks, projects};
+    const returnTask = (taskName) => {
+        allTasks.forEach(task => {
+            if(task.title === taskName) {
+                domStuff.showEditForm(task); 
+            }
+        })
+    }
+
+    return {createTask, deleteTask, getTodaysTasks, getUpcomingTasks, createProject, deleteProject, showTaskInfo,
+         returnTask, editTask, allTasks, projects};
 })();
 
 export {tasks}

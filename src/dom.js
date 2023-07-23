@@ -17,12 +17,14 @@ const domStuff = (() => {
         const prio = document.createElement('span');
         const trashIcon = document.createElement('i')
         const infoIcon = document.createElement('i');
+        const editIcon = document.createElement('i');
         title.textContent = task.title;
         date.textContent = `Due: ${task.dueDate}`;
         prio.textContent = task.priority;
         taskElement.classList.add('task-item');
         trashIcon.classList.add('fa', 'fa-trash-o');
         infoIcon.classList.add('fa', 'fa-info-circle');
+        editIcon.classList.add('fa', 'fa-pencil-square-o');
         check.classList.add('task-check');
         title.classList.add('task-crossout');
         icons.classList.add('icons');
@@ -31,8 +33,9 @@ const domStuff = (() => {
         check.id = 'task';
         trashIcon.id = 'delete-btn';
         infoIcon.id = 'info-btn';
+        editIcon.id = 'edit-btn';
         title.setAttribute('for', 'task');
-        icons.append(date, prio, trashIcon, infoIcon);
+        icons.append(date, prio, trashIcon, infoIcon, editIcon);
         taskElement.append(check, title, icons);
         taskList.append(taskElement);
     }
@@ -109,11 +112,21 @@ const domStuff = (() => {
         priority.textContent = `Priority: ${task.priority}`;
         description.textContent = `Description: ${task.description}`;
         infoContainer.append(name, divider, project, dueDate, priority, description)
-        }
+    }
 
+    const showEditForm = (task) => {
+        const editName = document.getElementById('editName');
+        const editDesc = document.getElementById('editDesc');
+        const editDate = document.getElementById('editDate');
+        const editPrio = document.getElementById('editPrio');
+        editName.value = task.title;
+        editDesc.value = task.description;
+        editDate.value = task.dueDate;
+        editPrio.value = task.priority;
+    }
 
     return { showAllTasks, showTodayTasks, showUpcomingTasks, addTaskElement, addProjectElement, showProjects, listProjectOptions,
-    showTaskforProject, showInfoElement }
+    showTaskforProject, showInfoElement, showEditForm }
 })();
 
 export { domStuff }

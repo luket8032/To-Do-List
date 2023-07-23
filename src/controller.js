@@ -14,7 +14,12 @@ const closeProjectBtn = document.getElementById('closeProject');
 const projectForm = document.querySelector('.project-form form');
 const infoPopup = document.getElementById('infoPopup')
 const closeInfoBtn = document.getElementById('closeInfo')
+const editPopup = document.getElementById('editPopup')
+const closeEditBtn = document.getElementById('closeEdit')
+const editForm = document.querySelector('.edit-popup form');
 let projects = document.querySelectorAll('#project');
+let selectedEdit
+
 
 const controller = (() => {
 
@@ -42,12 +47,22 @@ const controller = (() => {
     const openInfo = () => {
         infoPopup.style.display = 'block'
         formBackground.style.display = 'block';
-    }
+    };
 
     const closeInfo = () => {
         infoPopup.style.display = 'none';
         formBackground.style.display = 'none';
+    };
+
+    const openEdit = () => {
+        editPopup.style.display = 'block'
+        formBackground.style.display = 'block';
     }
+
+    const closeEdit = () => {
+        editPopup.style.display = 'none';
+        formBackground.style.display = 'none';
+    };
 
     const renderPage = (page) => {
         switch(page) {
@@ -88,8 +103,16 @@ const controller = (() => {
             addProjectListeners();
         } else {
             window.alert('Project name already taken.');
-            console.log(tasks.projects)
+
         }
+    }
+
+    const submitEditForm = (submitted) => {
+        const data = new FormData(submitted);
+        const formData = Object.fromEntries(data);
+        const page = document.getElementById('taskHeader').textContent;
+        tasks.editTask(selectedEdit ,formData.taskName, formData.taskDesc, formData.taskDate, formData.taskPrio)
+        renderPage(page);
     }
 
     const addListeners = () => {
@@ -106,6 +129,7 @@ const controller = (() => {
         })
 
         addBtn.addEventListener('click', () => {
+            form.reset();
             openForm();
         });
 
@@ -119,6 +143,10 @@ const controller = (() => {
 
         closeInfoBtn.addEventListener('click', () => {
             closeInfo();
+        });
+
+        closeEditBtn.addEventListener('click', () => {
+            closeEdit();
         });
         
         form.addEventListener("submit", (e) => {
@@ -135,6 +163,13 @@ const controller = (() => {
             projectForm.reset();
         })
 
+        editForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            submitEditForm(editForm);
+            closeEdit();
+            editForm.reset();
+        })
+
         newProjectBtn.addEventListener('click', () => {
             openProjectForm();
         })
@@ -143,6 +178,7 @@ const controller = (() => {
             const targetRemove = e.target.closest('#delete-btn');
             const targetRemoveProject = e.target.closest('#deleteProject');
             const targetInfo = e.target.closest('#info-btn');
+            const targetEdit = e.target.closest('#edit-btn');
             if(targetRemove) {
                 const targetTitle = targetRemove.parentElement.parentElement.querySelector('.task-crossout').textContent;
                 targetRemove.parentElement.parentElement.remove();
@@ -157,6 +193,11 @@ const controller = (() => {
                 targetRemoveProject.parentElement.remove();
                 tasks.deleteProject(projectName);
                 renderPage('All Tasks');
+            } else if (targetEdit) {
+                const targetTitle = targetEdit.parentElement.parentElement.querySelector('.task-crossout').textContent;
+                tasks.returnTask(targetTitle);
+                selectedEdit = targetTitle;
+                openEdit();;
             }
         })
     };

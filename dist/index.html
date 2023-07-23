@@ -97,6 +97,35 @@
         <div id="infoContainer"></div>
     </div>
 
+    <div class="edit-popup" id="editPopup">
+        <form>
+            <div>
+                <label for="taskName">Task Name: </label>
+                <input type="text" name="taskName" id="editName" required>
+            </div>
+            <div>
+                <label for="taskDesc">Description: </label>
+                <textarea name="taskDesc" id="editDesc" cols="30" rows="10" required></textarea>
+            </div>
+            <div>
+                <label for="taskDate">Date: </label>
+                <input type="date" name="taskDate" id="editDate" required>
+            </div>
+            <div>
+                <label for="taskPrio">Priority</label>
+                <select name="taskPrio" id="editPrio" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+            <div class="form-submit">
+                <button type="submit" class="submit-btn">submit</button>
+            </div>
+        </form>
+        <img src="icons/icons8-close-50.png" alt="close" class="close-icon" id="closeEdit" style="margin-top: 6px;">
+    </div>
+
     <div class="task-form-background" id="task-form-background"></div>
 </body>
 </html>

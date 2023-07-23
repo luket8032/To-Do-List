@@ -407,3 +407,33 @@ input[type=checkbox]:checked + label.task-crossout{
     overflow-wrap: break-word;
     overflow-y: auto;
 }
+
+/* Edit Popup */
+.edit-popup {
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 12px;
+    display: none;
+    max-width: 500px;
+    padding: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.edit-popup  div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.edit-popup  input {
+    padding: 2px 8px;
+}
+
+.edit-popup  textarea {
+    padding: 8px;
+    resize: none;
+}
