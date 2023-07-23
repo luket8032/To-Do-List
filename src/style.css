@@ -385,3 +385,25 @@ input[type=checkbox]:checked + label.task-crossout{
     padding: 8px;
     resize: none;
 }
+
+/* Info popup */
+
+.info-popup {
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 12px;
+    display: none;
+    max-height: 500px;
+    max-width: 500px;
+    padding: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.info-popup {
+    overflow-wrap: break-word;
+    overflow-y: auto;
+}

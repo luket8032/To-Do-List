@@ -1,8 +1,9 @@
 import { parseISO, addDays } from 'date-fns'
+import { domStuff } from './dom';
 
 const tasks = (() => {
     const allTasks = [];
-    let projects = ['None', 'balls']
+    let projects = ['None']
 
     const taskFactory = (title, description, dueDate, priority, project) => {
         return {title, description, dueDate, priority ,project};
@@ -84,7 +85,16 @@ const tasks = (() => {
         return upcomingTasks
     };
 
-    return {createTask, deleteTask, getTodaysTasks, getUpcomingTasks, createProject, deleteProject, allTasks, projects};
+    const showTaskInfo = (taskName) => {
+        allTasks.forEach(task => {
+            if(task.title === taskName) {
+                domStuff.showInfoElement(task);
+                console.log(task)
+            }
+        })
+    }
+
+    return {createTask, deleteTask, getTodaysTasks, getUpcomingTasks, createProject, deleteProject, showTaskInfo, allTasks, projects};
 })();
 
 export {tasks}

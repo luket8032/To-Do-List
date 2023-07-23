@@ -12,6 +12,8 @@ const newProjectBtn = document.getElementById('newProjectBtn');
 const newProjectContainer = document.getElementById('projectForm');
 const closeProjectBtn = document.getElementById('closeProject');
 const projectForm = document.querySelector('.project-form form');
+const infoPopup = document.getElementById('infoPopup')
+const closeInfoBtn = document.getElementById('closeInfo')
 let projects = document.querySelectorAll('#project');
 
 const controller = (() => {
@@ -36,6 +38,16 @@ const controller = (() => {
         newProjectContainer.style.display = 'none';
         formBackground.style.display = 'none';
     };
+
+    const openInfo = () => {
+        infoPopup.style.display = 'block'
+        formBackground.style.display = 'block';
+    }
+
+    const closeInfo = () => {
+        infoPopup.style.display = 'none';
+        formBackground.style.display = 'none';
+    }
 
     const renderPage = (page) => {
         switch(page) {
@@ -104,6 +116,10 @@ const controller = (() => {
         closeProjectBtn.addEventListener('click', () => {
             closeProjectForm();
         });
+
+        closeInfoBtn.addEventListener('click', () => {
+            closeInfo();
+        });
         
         form.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -132,7 +148,9 @@ const controller = (() => {
                 targetRemove.parentElement.parentElement.remove();
                 tasks.deleteTask(targetTitle);
             } else if (targetInfo) {
-                console.log('showing task info');
+                const targetTitle = targetInfo.parentElement.parentElement.querySelector('.task-crossout').textContent;
+                tasks.showTaskInfo(targetTitle)
+                openInfo();
             } else if (targetRemoveProject) {
                 const projectName = targetRemoveProject.parentElement.textContent;
                 const page = document.getElementById('taskHeader');

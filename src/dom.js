@@ -6,6 +6,7 @@ const domStuff = (() => {
     const taskList = document.getElementById('taskList');
     const projectList = document.getElementById('projectList');
     const selectProject = document.getElementById('taskProject');
+    const infoContainer = document.getElementById('infoContainer');
 
     const addTaskElement = (task) => {
         const taskElement = document.createElement('div');
@@ -94,9 +95,25 @@ const domStuff = (() => {
         })
     }
 
+    const showInfoElement = (task) => {
+        infoContainer.innerHTML = '';
+        const name = document.createElement('h1');
+        const divider = document.createElement('hr');
+        const project = document.createElement('p');
+        const dueDate = document.createElement('p');
+        const priority = document.createElement('p');
+        const description = document.createElement('p');
+        name.textContent = task.title;
+        project.textContent = `Project: ${task.project}`;
+        dueDate.textContent = `Due Date: ${task.dueDate}`;
+        priority.textContent = `Priority: ${task.priority}`;
+        description.textContent = `Description: ${task.description}`;
+        infoContainer.append(name, divider, project, dueDate, priority, description)
+        }
+
 
     return { showAllTasks, showTodayTasks, showUpcomingTasks, addTaskElement, addProjectElement, showProjects, listProjectOptions,
-    showTaskforProject }
+    showTaskforProject, showInfoElement }
 })();
 
 export { domStuff }
