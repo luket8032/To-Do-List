@@ -121,6 +121,7 @@ const controller = (() => {
 
         document.addEventListener('click', (e) => {
             const targetRemove = e.target.closest('#delete-btn');
+            const targetRemoveProject = e.target.closest('#deleteProject');
             const targetInfo = e.target.closest('#info-btn');
             if(targetRemove) {
                 const targetTitle = targetRemove.parentElement.parentElement.querySelector('.task-crossout').textContent;
@@ -128,6 +129,10 @@ const controller = (() => {
                 tasks.deleteTask(targetTitle);
             } else if (targetInfo) {
                 console.log('showing task info');
+            } else if (targetRemoveProject) {
+                const projectName = targetRemoveProject.parentElement.textContent;
+                targetRemoveProject.parentElement.remove();
+                tasks.deleteProject(projectName);
             }
         })
     };

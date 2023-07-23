@@ -38,8 +38,12 @@ const domStuff = (() => {
 
     const addProjectElement = (projectName) => {
         const projectBtn = document.createElement('button')
+        const trashIcon = document.createElement('i')
+        trashIcon.classList.add('fa', 'fa-trash-o');
         projectBtn.textContent = projectName;
-        projectBtn.id = 'project'
+        projectBtn.id = 'project';
+        trashIcon.id = 'deleteProject';
+        projectBtn.append(trashIcon);
         projectList.append(projectBtn);                                            
     }
     

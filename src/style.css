@@ -336,6 +336,27 @@ input[type=checkbox]:checked + label.task-crossout{
     flex-direction: column;
 }
 
+#project {
+    display: block;
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#project i {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: .2s;
+}
+
+#project i:hover {
+    scale: 1.2;
+}
+
 /* Project Form */
 .project-form {
     background-color: var(--secondary);
